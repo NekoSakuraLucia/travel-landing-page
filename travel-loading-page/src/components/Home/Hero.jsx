@@ -11,7 +11,7 @@ const Hero = () => {
     const currentSlide = heroImages[activeIndex];
 
     return (
-        <div className="relative w-full h-screen overflow-hidden bg-black font-['Noto_Sans_Thai']">
+        <div className="relative w-full h-[100svh] overflow-hidden bg-black">
             {/* Main Slider */}
             <Swiper
                 modules={[Autoplay, EffectCreative, Navigation]}
@@ -57,31 +57,31 @@ const Hero = () => {
 
             {/* Main Content */}
             <AnimatePresence mode="wait">
-                <div className="absolute inset-0 z-20 flex flex-col justify-between py-20 px-8 lg:px-16">
+                <div className="absolute inset-0 z-20 flex flex-col justify-between py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-16">
                     {/* Top Section */}
                     <motion.div 
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="flex justify-between items-start"
+                        className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0"
                     >
                         <div className="flex items-center space-x-3">
                             <motion.div 
-                                className="h-12 w-1 bg-white rounded-full"
+                                className="h-8 sm:h-12 w-1 bg-white rounded-full"
                                 initial={{ height: 0 }}
-                                animate={{ height: 48 }}
+                                animate={{ height: [0, 32, 48] }}
                                 transition={{ delay: 0.5 }}
                             />
-                            <div className="text-sm tracking-wider">
+                            <div className="text-xs sm:text-sm tracking-wider">
                                 <p className="text-white/70">ค้นพบประสบการณ์ใหม่</p>
                                 <p className="font-medium">{currentSlide.location}</p>
                             </div>
                         </div>
                         
-                        <div className="flex items-center space-x-4">
+                        <div className="flex items-center space-x-2 sm:space-x-4">
                             {heroImages.map((_, idx) => (
                                 <motion.div
                                     key={idx}
-                                    className={`w-14 h-1 rounded-full cursor-pointer
+                                    className={`w-8 sm:w-14 h-1 rounded-full cursor-pointer
                                         ${idx === activeIndex ? 'bg-white' : 'bg-white/20'}`}
                                     whileHover={{ scale: 1.2 }}
                                     onClick={() => setActiveIndex(idx)}
@@ -90,7 +90,7 @@ const Hero = () => {
                         </div>
                     </motion.div>
 
-                     <div className="flex justify-between items-center gap-12">
+                    <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 lg:gap-12 mt-8 lg:mt-0">
                         {/* Text Content */}
                         <motion.div 
                             className="max-w-2xl"
@@ -100,7 +100,7 @@ const Hero = () => {
                             exit={{ opacity: 0, x: 50 }}
                         >
                             <motion.h1 
-                                className="text-7xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80"
+                                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.3 }}
@@ -108,7 +108,7 @@ const Hero = () => {
                                 {currentSlide.title}
                             </motion.h1>
                             <motion.p 
-                                className="mt-6 text-2xl text-white/80 font-light"
+                                className="mt-4 sm:mt-6 text-lg sm:text-xl lg:text-2xl text-white/80 font-light"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5 }}
@@ -119,7 +119,7 @@ const Hero = () => {
 
                         {/* Preview Images */}
                         <motion.div 
-                            className="hidden lg:flex items-center gap-4"
+                            className="hidden lg:flex items-center gap-4 overflow-x-auto scrollbar-hide"
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.7 }}
@@ -127,8 +127,8 @@ const Hero = () => {
                             {heroImages.map((image, idx) => (
                                 <motion.div
                                     key={image.id}
-                                    className={`relative rounded-lg overflow-hidden cursor-pointer
-                                        ${idx === activeIndex ? 'w-48 h-72' : 'w-24 h-72 opacity-50'}
+                                    className={`relative rounded-lg overflow-hidden cursor-pointer flex-shrink-0
+                                        ${idx === activeIndex ? 'w-36 sm:w-48 h-56 sm:h-72' : 'w-20 sm:w-24 h-56 sm:h-72 opacity-50'}
                                     `}
                                     whileHover={{ opacity: 1 }}
                                     onClick={() => setActiveIndex(idx)}
@@ -155,21 +155,21 @@ const Hero = () => {
 
                     {/* Bottom Section */}
                     <motion.div 
-                        className="flex justify-between items-end"
+                        className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 sm:gap-0 mt-8 lg:mt-0"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7 }}
                     >
-                        <div className="flex gap-6">
+                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 w-full sm:w-auto">
                             <motion.button
-                                className="px-8 py-4 bg-white text-black rounded-lg font-medium hover:bg-white/90 transition-all"
+                                className="px-6 sm:px-8 py-3 sm:py-4 bg-white text-black rounded-lg font-medium hover:bg-white/90 transition-all text-sm sm:text-base"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
                                 สำรวจสถานที่
                             </motion.button>
                             <motion.button
-                                className="px-8 py-4 border border-white/20 rounded-lg backdrop-blur-sm hover:bg-white/10 transition-all"
+                                className="px-6 sm:px-8 py-3 sm:py-4 border border-white/20 rounded-lg backdrop-blur-sm hover:bg-white/10 transition-all text-sm sm:text-base"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
@@ -179,11 +179,11 @@ const Hero = () => {
 
                         <div className="flex items-center space-x-6">
                             <div className="text-right">
-                                <p className="text-4xl font-bold">{(activeIndex + 1).toString().padStart(2, '0')}</p>
-                                <p className="text-sm text-white/70">จาก {heroImages.length.toString().padStart(2, '0')}</p>
+                                <p className="text-2xl sm:text-4xl font-bold">{(activeIndex + 1).toString().padStart(2, '0')}</p>
+                                <p className="text-xs sm:text-sm text-white/70">จาก {heroImages.length.toString().padStart(2, '0')}</p>
                             </div>
                             <motion.div 
-                                className="flex items-center justify-center w-12 h-12 rounded-full border border-white/20 backdrop-blur-sm cursor-pointer"
+                                className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 backdrop-blur-sm cursor-pointer"
                                 whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.1)' }}
                                 whileTap={{ scale: 0.95 }}
                             >
