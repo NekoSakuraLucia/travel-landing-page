@@ -90,31 +90,68 @@ const Hero = () => {
                         </div>
                     </motion.div>
 
-                    {/* Center Content */}
-                    <motion.div 
-                        className="max-w-4xl"
-                        key={activeIndex}
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 50 }}
-                    >
-                        <motion.h1 
-                            className="text-7xl font-bold leading-tight"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 }}
+                     <div className="flex justify-between items-center gap-12">
+                        {/* Text Content */}
+                        <motion.div 
+                            className="max-w-2xl"
+                            key={`text-${activeIndex}`}
+                            initial={{ opacity: 0, x: -50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 50 }}
                         >
-                            {currentSlide.title}
-                        </motion.h1>
-                        <motion.p 
-                            className="mt-6 text-2xl text-white/80 font-light max-w-2xl"
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.5 }}
+                            <motion.h1 
+                                className="text-7xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.3 }}
+                            >
+                                {currentSlide.title}
+                            </motion.h1>
+                            <motion.p 
+                                className="mt-6 text-2xl text-white/80 font-light"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5 }}
+                            >
+                                {currentSlide.subtitle}
+                            </motion.p>
+                        </motion.div>
+
+                        {/* Preview Images */}
+                        <motion.div 
+                            className="hidden lg:flex items-center gap-4"
+                            initial={{ opacity: 0, x: 50 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.7 }}
                         >
-                            {currentSlide.subtitle}
-                        </motion.p>
-                    </motion.div>
+                            {heroImages.map((image, idx) => (
+                                <motion.div
+                                    key={image.id}
+                                    className={`relative rounded-lg overflow-hidden cursor-pointer
+                                        ${idx === activeIndex ? 'w-48 h-72' : 'w-24 h-72 opacity-50'}
+                                    `}
+                                    whileHover={{ opacity: 1 }}
+                                    onClick={() => setActiveIndex(idx)}
+                                    layoutId={`preview-${idx}`}
+                                    transition={{ duration: 0.5 }}
+                                >
+                                    <div 
+                                        className="absolute inset-0 bg-cover bg-center"
+                                        style={{ backgroundImage: `url(${image.url})` }}
+                                    />
+                                    {idx === activeIndex && (
+                                        <motion.div 
+                                            className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent"
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                        >
+                                            <p className="text-sm font-medium">{image.location}</p>
+                                        </motion.div>
+                                    )}
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </div>
 
                     {/* Bottom Section */}
                     <motion.div 
