@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectCreative, Navigation } from 'swiper/modules';
-import { heroImages } from '../../data/heroImages';
+import { heroImages } from '../../data/items';
 import { useState, useRef } from 'react';
 import 'swiper/css';
 import 'swiper/css/effect-creative';
@@ -47,7 +47,7 @@ const Hero = () => {
             >
                 {heroImages.map((slide) => (
                     <SwiperSlide key={slide.id} className="relative">
-                        <motion.div 
+                        <motion.div
                             className="absolute inset-0"
                             style={{
                                 backgroundImage: `url(${slide.url})`,
@@ -68,13 +68,13 @@ const Hero = () => {
             <AnimatePresence mode="wait">
                 <div className="absolute inset-0 z-20 flex flex-col justify-between py-8 sm:py-12 md:py-16 lg:py-20 px-4 sm:px-6 md:px-8 lg:px-16">
                     {/* Top Section */}
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0"
                     >
                         <div className="flex items-center space-x-3">
-                            <motion.div 
+                            <motion.div
                                 className="h-8 sm:h-12 w-1 bg-white rounded-full"
                                 initial={{ height: 0 }}
                                 animate={{ height: [0, 32, 48] }}
@@ -85,7 +85,7 @@ const Hero = () => {
                                 <p className="font-medium">{currentSlide.location}</p>
                             </div>
                         </div>
-                        
+
                         <div className="flex items-center space-x-2 sm:space-x-4">
                             {heroImages.map((_, idx) => (
                                 <motion.div
@@ -101,14 +101,14 @@ const Hero = () => {
 
                     <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 lg:gap-12 mt-8 lg:mt-0">
                         {/* Text Content */}
-                        <motion.div 
+                        <motion.div
                             className="max-w-2xl"
                             key={`text-${activeIndex}`}
                             initial={{ opacity: 0, x: -50 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: 50 }}
                         >
-                            <motion.h1 
+                            <motion.h1
                                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-white/80"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -116,7 +116,7 @@ const Hero = () => {
                             >
                                 {currentSlide.title}
                             </motion.h1>
-                            <motion.p 
+                            <motion.p
                                 className="mt-4 sm:mt-6 text-lg sm:text-xl lg:text-2xl text-white/80 font-light"
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
@@ -127,7 +127,7 @@ const Hero = () => {
                         </motion.div>
 
                         {/* Preview Images */}
-                        <motion.div 
+                        <motion.div
                             className="hidden lg:flex items-center gap-4 overflow-x-auto scrollbar-hide"
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -144,12 +144,12 @@ const Hero = () => {
                                     layoutId={`preview-${idx}`}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    <div 
+                                    <div
                                         className="absolute inset-0 bg-cover bg-center"
                                         style={{ backgroundImage: `url(${image.url})` }}
                                     />
                                     {idx === activeIndex && (
-                                        <motion.div 
+                                        <motion.div
                                             className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent"
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
@@ -163,7 +163,7 @@ const Hero = () => {
                     </div>
 
                     {/* Bottom Section */}
-                    <motion.div 
+                    <motion.div
                         className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6 sm:gap-0 mt-8 lg:mt-0"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -191,7 +191,7 @@ const Hero = () => {
                                 <p className="text-2xl sm:text-4xl font-bold">{(activeIndex + 1).toString().padStart(2, '0')}</p>
                                 <p className="text-xs sm:text-sm text-white/70">จาก {heroImages.length.toString().padStart(2, '0')}</p>
                             </div>
-                            <motion.div 
+                            <motion.div
                                 className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 backdrop-blur-sm cursor-pointer"
                                 whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.1)' }}
                                 whileTap={{ scale: 0.95 }}

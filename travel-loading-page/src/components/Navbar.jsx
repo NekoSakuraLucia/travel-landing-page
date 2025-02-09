@@ -1,20 +1,13 @@
-import { NavLink } from "react-router-dom";
-import { BiSearch } from "react-icons/bi";
-import { IoAirplaneOutline } from "react-icons/io5";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { NavLink } from 'react-router-dom';
+import { BiSearch } from 'react-icons/bi';
+import { IoAirplaneOutline } from 'react-icons/io5';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { menuItems } from '../data/items';
 
 const Navbar = () => {
     const [nav, setNav] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-
-    const menuItems = [
-        { href: "/", label: "หน้าแรก" },
-        { href: "/destinations", label: "จุดหมาย" },
-        { href: "/culture", label: "วัฒนธรรม" },
-        { href: "/booking", label: "จองเลย" },
-        { href: "/contact", label: "ติดต่อเรา" },
-    ];
 
     useEffect(() => {
         const handleScroll = () => {
