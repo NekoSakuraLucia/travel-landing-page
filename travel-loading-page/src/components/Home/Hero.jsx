@@ -2,18 +2,27 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectCreative, Navigation } from 'swiper/modules';
 import { heroImages } from '../../data/heroImages';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import 'swiper/css';
 import 'swiper/css/effect-creative';
 
 const Hero = () => {
     const [activeIndex, setActiveIndex] = useState(0);
+    const swiperRef = useRef(null);
     const currentSlide = heroImages[activeIndex];
+
+    const handleSlideClick = (idx) => {
+        setActiveIndex(idx);
+        if (swiperRef.current && swiperRef.current.swiper) {
+            swiperRef.current.swiper.slideTo(idx);
+        }
+    };
 
     return (
         <div className="relative w-full h-[100svh] overflow-hidden bg-black">
             {/* Main Slider */}
             <Swiper
+                ref={swiperRef}
                 modules={[Autoplay, EffectCreative, Navigation]}
                 effect="creative"
                 creativeEffect={{
@@ -131,7 +140,7 @@ const Hero = () => {
                                         ${idx === activeIndex ? 'w-36 sm:w-48 h-56 sm:h-72' : 'w-20 sm:w-24 h-56 sm:h-72 opacity-50'}
                                     `}
                                     whileHover={{ opacity: 1 }}
-                                    onClick={() => setActiveIndex(idx)}
+                                    onClick={() => handleSlideClick(idx)}
                                     layoutId={`preview-${idx}`}
                                     transition={{ duration: 0.5 }}
                                 >
