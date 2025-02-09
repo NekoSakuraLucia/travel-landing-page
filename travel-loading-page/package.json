@@ -2,6 +2,8 @@
   "name": "travel-loading-page",
   "private": true,
   "version": "0.0.0",
+  "author": "NekoSakuraLucia (Cxllme Neko)",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
