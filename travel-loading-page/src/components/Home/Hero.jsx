@@ -93,7 +93,7 @@ const Hero = () => {
                                     className={`w-8 sm:w-14 h-1 rounded-full cursor-pointer
                                         ${idx === activeIndex ? 'bg-white' : 'bg-white/20'}`}
                                     whileHover={{ scale: 1.2 }}
-                                    onClick={() => setActiveIndex(idx)}
+                                    onClick={() => handleSlideClick(idx)}
                                 />
                             ))}
                         </div>
