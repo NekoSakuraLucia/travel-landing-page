@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import HomePage from "./components/Home/Hero"
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import HomePage from './components/Home/Hero';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
       </div>
       <Footer />
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
