@@ -5,8 +5,8 @@
 @tailwind utilities;
 
 :root {
-  font-family: "IBM Plex Sans Thai", serif;
-  font-weight: 400;
-  font-style: normal;
-  color: white;
+    font-family: 'IBM Plex Sans Thai', serif;
+    font-weight: 400;
+    font-style: normal;
+    color: white;
 }

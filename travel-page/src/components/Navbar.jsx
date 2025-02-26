@@ -20,22 +20,22 @@ const Navbar = () => {
     // สร้าง active style function
     const getActiveStyle = ({ isActive }) => {
         return `relative text-sm font-medium transition-colors duration-300 ${
-            isActive 
-            ? 'text-white after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white after:rounded-full' 
-            : 'text-white/70 hover:text-white'
+            isActive
+                ? 'text-white after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-white after:rounded-full'
+                : 'text-white/70 hover:text-white'
         }`;
     };
 
     const getMobileActiveStyle = ({ isActive }) => {
         return `block py-2 transition-colors duration-300 ${
-            isActive 
-            ? 'text-white font-medium' 
-            : 'text-white/70 hover:text-white'
+            isActive
+                ? 'text-white font-medium'
+                : 'text-white/70 hover:text-white'
         }`;
     };
 
     return (
-        <motion.nav 
+        <motion.nav
             className={`fixed w-full z-50 transition-all duration-300 ${
                 scrolled ? 'bg-black/30 backdrop-blur-md' : 'bg-transparent'
             }`}
@@ -45,10 +45,14 @@ const Navbar = () => {
         >
             <div className="max-w-7xl mx-auto flex items-center justify-between h-20 px-4 lg:px-8">
                 {/* Logo */}
-                <NavLink 
-                    to="/" 
+                <NavLink
+                    to="/"
                     className={({ isActive }) =>
-                        `flex items-center space-x-2 ${isActive ? 'text-white' : 'text-white/90 hover:text-white'}`
+                        `flex items-center space-x-2 ${
+                            isActive
+                                ? 'text-white'
+                                : 'text-white/90 hover:text-white'
+                        }`
                     }
                 >
                     <IoAirplaneOutline className="text-2xl rotate-[-45deg]" />
